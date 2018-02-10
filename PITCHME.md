@@ -117,8 +117,8 @@
 
 ---
 
-![](doc/img/datomic-architecture.png&size=auto 90%)
+![](doc/img/datomic-architecture.png)
 
 ---
 
-![](doc/img/datomic-cloud-prod-topology.png&size=auto 90%)
+![](doc/img/datomic-cloud-prod-topology.png)
