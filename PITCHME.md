@@ -48,34 +48,34 @@
 
 ---
 
-## エディション
+## Datomic On-Prem （オンプレミス）
 
-### Datomic On-Prem （オンプレミス）
-
-#### Free
+### Free
 - 無料で利用可能（OSSではない）
 - メモリ、またはローカルディスクにデータを格納する。
 - Peerライブラリのみ利用可能
 - 必要なプロセスが全て単一JVM内で動作
 
-#### Pro Starter Edition
+### Pro Starter Edition
 - 最初の１年間は無料で利用可能で、最新版にアップデート可能
 - その後も既存のバージョンは引き続き利用可能だが、アップデートするには、年間５千ドルの契約が必要
 - AWS DDB, RDBMS, Cassandraなどにデータ保存可能
 - Peer, Client APIが利用可能
 - Transactor, Peer Server(Client APIの場合）プロセスの起動が必要
 
-### Datomic Cloud (AWS版）
+---
+
+## Datomic Cloud (AWS版）
 - マネージド・サービスではなく、Cloud Formationでスタックを顧客のAWSアカウント内に立ち上げる方式
 - 全てのプロセスとデータを自分のAWSアカウント内で管理できる
 - Client APIのみ利用可能
 
-#### Solo
+### Solo
 - AWSのコスト+ライセンスで月額約30ドル
 - 全機能が利用可能だが、高可用性はない
 - EC2のインスタンスサイズは必要最小限
 
-#### Production
+### Production
 - 高可用性, 単一障害点なし
 - 自動スケールアウト、負荷分散
 - 複数のクエリグループを利用可能
@@ -104,6 +104,12 @@
         - Cloud版はDBの作成、削除が可能
 
 ![client deps](doc/img/datomic-client-cloud-deps.png)
+
+---
+
+## アーキテクチャ
+
+![アーキテクチャ](doc/img/datomic-architecture.png)
 
 
 
