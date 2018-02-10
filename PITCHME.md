@@ -110,10 +110,6 @@
 
 ![client deps](doc/img/datomic-client-cloud-deps.png)
 
----
-
-## アーキテクチャ
-
 ---?image=doc/img/datomic-architecture.png&size=auto 90%
 
 ---
