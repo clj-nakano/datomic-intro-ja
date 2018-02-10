@@ -122,3 +122,86 @@
 ---
 
 ![](doc/img/datomic-cloud-prod-topology.png)
+
+---
+
+## Datomicのクエリ
+
+- Datalog
+
+```clojure
+(require '[datomic.client.api :as d])
+
+(def cfg {:server-type :cloud
+          :region "<your AWS Region>" ;; e.g. us-east-1
+          :system "<system-name>"
+          :query-group "<system-name>"
+          :endpoint "http://entry.<system-name>.<region>.datomic.net:8182/"
+          :proxy-port <local-port for SSH tunnel to bastion>})
+
+(def client (d/client cfg))
+
+(def conn (d/connect client {:db-name "movies"}))
+
+(def db (d/db conn))
+
+;; query
+(d/q {:query [:find ?release-name
+              :where [_ :release/name ?release-name]]
+      :args [db]})
+
+;; result
+#{["Osmium"]
+  ["Hela roept de akela"]
+  ["Ali Baba"]
+  ["The Power of the True Love Knot"]
+  ...}
+```
+
+---
+
+## Datomicのクエリ
+
+- pull API
+
+```clojure
+(def db (d/db conn))
+
+(d/pull db '[*] 809240558083034)
+;==> {:db/id 809240558083034
+;     :track/artistCredit "John Lennon"
+;     :track/artists [{:db/id 527765581346058}]
+;     :track/duration 217893
+;     :track/name "I Found Out"
+;     :track/position 3}
+```
+
+---
+
+## Datomicのクエリ
+
+- Index
+
+```clojure
+(def db (d/db conn))
+
+(d/datoms db :eavt [:user/name "Mike"])
+;==> #datom[50142128273096769 64 "Mike" 13194139533318 true]
+```
+
+---
+
+## Datomicのクエリ
+
+- Transaction
+
+```clojure
+(d/tx-range conn {:start 1001 :end 1001})
+;==> [{:tx-data '([17592186045418 64 "Mike" 13194139534313 true]
+;                 [17592186045419 64 "Dorrene" 13194139534313 true]
+;                 [17592186045420 64 "Benti" 13194139534313 true]
+;                 [17592186045421 64 "Derek" 13194139534313 true]
+;                 [17592186045422 64 "Kristen" 13194139534313 true]) :t 1001}]
+```
+
+---
