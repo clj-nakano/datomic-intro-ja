@@ -44,20 +44,21 @@
     - 削除はretractフラグで区別したレコードで実現。
 - 結果として、データは古くなることはあっても変更されることはない。
     - 汚染の心配なしにキャッシュ可能
-    - データを複数のメディアに格納可能 (EFS, DDB, S3, Memcached)
+    - データを複数のメディアに格納可能 (SSD, EFS, DDB, S3)
 
 ---
 
-## Datomic On-Prem （オンプレミス）
+## Datomic On-Prem （オンプレミス）Free
 
-### Free
 
 - 無料で利用可能（OSSではない）
 - メモリ、またはローカルディスクにデータを格納する。
 - Peerライブラリのみ利用可能
 - 必要なプロセスが全て単一JVM内で動作
 
-### Pro Starter Edition
+---
+
+## Datomic On-Prem Pro Starter Edition
 
 - 最初の１年間は無料で利用可能で、最新版にアップデート可能
 - その後も既存のバージョンは引き続き利用可能だが、アップデートするには、年間５千ドルの契約が必要
@@ -73,13 +74,17 @@
 - 全てのプロセスとデータを自分のAWSアカウント内で管理できる
 - Client APIのみ利用可能
 
-### Solo
+---
+
+## Datomic Cloud Solo Topology
 
 - AWSのコスト+ライセンスで月額約30ドル
 - 全機能が利用可能だが、高可用性はない
 - EC2のインスタンスサイズは必要最小限
 
-### Production
+---
+
+## Datomic Cloud Production Topology
 
 - 高可用性, 単一障害点なし
 - 自動スケールアウト、負荷分散
@@ -102,7 +107,7 @@
 
 - Client APIは、Datomic Cloud、またはOn-Prem Proに付属するPeer-serverを経由してアクセス
     - ステートフルなDBへの接続や、データをキャッシュする必要が無い
-    - AWS LabmdaなどのFaaSでも利用可能
+    - AWS LambdaなどのFaaSでも利用可能
     - 単一のDBに対してのみ検索可能
     - On-Prem Client APIではDBの作成・削除ができないなど、Peerに比べて機能が減らされている
         - Peer ServerをDB毎に立てる必要があるので、Clientからの動的生成がそもそもできない 
@@ -112,4 +117,4 @@
 
 ---?image=doc/img/datomic-architecture.png&size=auto 90%
 
----
+---?image=doc/img/datomic-cloud-prod-topology.png&size=auto 90%
