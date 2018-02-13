@@ -124,7 +124,6 @@
     - On-Prem Client APIではDBの作成・削除ができないなど、Peerに比べて機能が減らされている |
         - Peer ServerをDB毎に立てる必要があるので、Clientからの動的生成がそもそもできない  |
         - Cloud版はDBの作成、削除が可能 |
-
 ![client deps](doc/img/datomic-client-cloud-deps.png)
 
 ---
