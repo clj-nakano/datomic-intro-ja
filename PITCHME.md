@@ -28,7 +28,7 @@
     - 同じ値を渡せば同じ結果が得られる再現性がある。メモリアドレスを渡したら？結果は不定である。|
     - テストのための環境を再現するのが容易。値をセットすればいいだけで、オブジェクトなどの考慮不要。 |
     - 値は汎用的でどの言語にも対応する概念がある。 |
-- 詳しくは[Value of Values](https://gitpitch.com/k2n/value-of-values-transcript-ja)のスライドで。|
+- 詳しくは [Value of Values](https://gitpitch.com/k2n/value-of-values-transcript-ja) のスライドで。 |
 
 ---
 
